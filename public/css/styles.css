@@ -1,0 +1,35 @@
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+th,
+td {
+    padding: 7px;
+}
+
+table tr:nth-child(odd) td {
+    background: #ccc;
+}
+
+table tr:nth-child(even) td {
+    background: #fff;
+}
+
+.subjects-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 7px;
+}
+
+.form-text-input {
+    width: 100%;
+}
+
+#form {
+    width: 100%;
+}
