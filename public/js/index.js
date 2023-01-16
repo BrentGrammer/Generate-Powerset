@@ -16,7 +16,6 @@ function calculatePowerset(event) {
   try {
     const subjectsInput = document.getElementById("subjects-input");
     const subjects = subjectsInput.value;
-    console.log({subjects})
     const trimmedSubjects = subjects.trim();
     if (!trimmedSubjects) return;
 
