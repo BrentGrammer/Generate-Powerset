@@ -49,3 +49,11 @@ table tr:nth-child(even) td {
 .section-header {
     margin: 0;
 }
+
+.form-submit-button {
+    background-color: skyblue;
+    border-radius: 5px;
+    border: 1px solid slategray;
+    padding: 1rem 2rem;
+    cursor: pointer;
+}
