@@ -16,8 +16,11 @@
         <form id="subjects-form" class="form">
           <label for="subjects-input">Enter a comma separated list of items to get all possible combinations:</label>
           <input id="subjects-input" type="text" name="subjects" class="form-text-input" placeholder="item1,item2,item3,..." />
-          <button type="submit" class="form-submit-button">Get Combinations</button>
+          <button id="form-submit-button" type="submit" class="form-submit-button">Get Combinations</button>
         </form>
+        <div id="loading" class="loading">
+          Loading&#8230;     
+        </div>
         <table id="subject-table">
           <thead>
             <tr>

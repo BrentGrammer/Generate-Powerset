@@ -57,3 +57,7 @@ table tr:nth-child(even) td {
     padding: 1rem 2rem;
     cursor: pointer;
 }
+
+.loading {
+    display: none;
+}
