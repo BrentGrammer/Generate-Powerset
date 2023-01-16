@@ -1,4 +1,4 @@
-# Powerset Generator
+# Power Set Generator
 A JavaScript program to generate a table of all possible combinations of a given list of items.
 
 ## Pre-requisites:
