@@ -2,7 +2,7 @@ import { formatSubjectRowString, addCheckBoxToRow } from "./formatRows.js";
 
 function genSubjectComboRows(
   powerset,
-  filterFn = FILTERS.showAllSubjectCombinations
+  filterFn
 ) {
   const emptySetIdx = 1;
 
