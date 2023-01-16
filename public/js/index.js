@@ -3,11 +3,11 @@ import { renderSubjectCombinations } from "./renderSubjectCombos.js";
 function calculatePowerset(event) {
   event.preventDefault();
   const subjectsInput = document.getElementById("subjects-input");
-
   const subjects = subjectsInput.value;
-  const commaSeparated = subjects.split(",");
+  if (!subjects) return;
 
-  renderSubjectCombinations(commaSeparated);
+  const subjectsList = subjects.split(",");
+  renderSubjectCombinations(subjectsList);
 }
 
 const form = document.getElementById("subjects-form");
