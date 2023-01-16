@@ -1,3 +1,7 @@
+body {
+    padding: 2rem;
+}
+
 table,
 th,
 td {
@@ -23,11 +27,14 @@ table tr:nth-child(even) td {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    padding: 7px;
 }
 
 .form-text-input {
     width: 100%;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    border-radius: 5px;
+    border: 1px solid slategray;
+    font-size: 1rem;
 }
 
 .form {
@@ -37,4 +44,8 @@ table tr:nth-child(even) td {
     align-items: center;
     gap: 0.5rem;
     width: 100%;
+}
+
+.section-header {
+    margin: 0;
 }

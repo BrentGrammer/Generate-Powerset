@@ -6,15 +6,16 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1"
     />
-
     <title>Baseline Code Snippets Document</title>
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
     <main>
       <section class="subjects-section">
+        <h1 class="section-header">Generate a Power Set</h1>
         <form id="subjects-form" class="form">
-          <input id="subjects-input" type="text" name="subjects" class="form-text-input" />
+          <label for="subjects-input">Enter a comma separated list of items to get all possible combinations:</label>
+          <input id="subjects-input" type="text" name="subjects" class="form-text-input" placeholder="item1,item2,item3,..." />
           <button type="submit">Get Combinations</button>
         </form>
         <table id="subject-table">
