@@ -1,12 +1,14 @@
-import { renderSubjectCombinations } from "./renderSubjectCombos.js";
+import { renderSubjectCombinations, clearTable } from "./renderSubjectCombos.js";
 
 function calculatePowerset(event) {
   event.preventDefault();
+  clearTable();
   const subjectsInput = document.getElementById("subjects-input");
   const subjects = subjectsInput.value;
-  if (!subjects) return;
+  const trimmedSubjects = subjects.trim();
+  if (!trimmedSubjects) return;
 
-  const subjectsList = subjects.split(",");
+  const subjectsList = trimmedSubjects.split(",");
   renderSubjectCombinations(subjectsList);
 }
 

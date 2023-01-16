@@ -26,4 +26,8 @@ function renderSubjectCombinations(subjects) {
   });
 }
 
-export { renderSubjectCombinations };
+function clearTable() {
+  $tbody.innerHTML = "";
+}
+
+export { renderSubjectCombinations, clearTable };
