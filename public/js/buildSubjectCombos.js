@@ -4,10 +4,10 @@ function genSubjectComboRows(
   powerset,
   filterFn = FILTERS.showAllSubjectCombinations
 ) {
-  const emtpySet = 1;
+  const emptySetIdx = 1;
 
   const powersetList = powerset
-    .slice(emtpySet)
+    .slice(emptySetIdx)
     .filter(filterFn)
     .map((set, i) => addCheckBoxToRow(formatSubjectRowString(set, i), i));
 
