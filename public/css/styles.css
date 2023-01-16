@@ -22,7 +22,7 @@ table tr:nth-child(even) td {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     padding: 7px;
 }
 
@@ -31,5 +31,10 @@ table tr:nth-child(even) td {
 }
 
 .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
     width: 100%;
 }
