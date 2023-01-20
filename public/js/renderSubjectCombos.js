@@ -15,7 +15,9 @@ function _insertSubjectRow(rowContent) {
 
 function renderPowerset(subjects) {
   const rawPowerset = genPowerset(subjects);
-  const removedSingleEntries = rawPowerset.filter(set => set.length !== 1);
+  const removedSingleEntries = rawPowerset.filter(
+    (set) => set.length !== 1 && set.length !== subjects.length
+  );
 
   const subjectComboRows = genSubjectComboRows(
     removedSingleEntries,
