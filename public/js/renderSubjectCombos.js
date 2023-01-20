@@ -13,7 +13,7 @@ function _insertSubjectRow(rowContent) {
   $newCell.innerHTML = rowContent;
 }
 
-function renderSubjectCombinations(subjects) {
+function renderPowerset(subjects) {
   const rawPowerset = genPowerset(subjects);
 
   const subjectComboRows = genSubjectComboRows(
@@ -30,4 +30,4 @@ function clearTable() {
   $tbody.innerHTML = "";
 }
 
-export { renderSubjectCombinations, clearTable };
+export { renderPowerset, clearTable };
