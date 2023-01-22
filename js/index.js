@@ -1,12 +1,18 @@
 import { renderPowerset, clearTable } from "./renderPowerset.js";
 import { hideLoading, showLoading } from "./loading.js";
 import { cleanInput } from "./cleanInput.js";
-import { clearFilters, hideFilters, renderFilters } from "./filters.js";
+import {
+  clearFilters,
+  hideFilters,
+  removeFilterListeners,
+  renderFilters,
+} from "./filters.js";
 
 document.addEventListener("DOMContentLoaded", function (_) {
   const $submitButton = document.getElementById("form-submit-button");
   // use event to show loading first before the browser runs batch long running update to render the table (in the case of long lists)
   $submitButton.addEventListener("mousedown", (e) => {
+    removeFilterListeners();
     hideFilters();
     clearFilters();
     clearTable();
