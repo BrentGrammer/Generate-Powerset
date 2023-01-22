@@ -1,4 +1,4 @@
-import { genSubjectComboRows } from "./buildSubjectCombos.js";
+import { buildSubjectRows } from "./buildSubjectCombos.js";
 import { genPowerset } from "./powerset.js";
 import { FILTERS } from "./subjectComboFilters.js";
 
@@ -19,7 +19,7 @@ function renderPowerset(subjects) {
     (set) => set.length !== 1 && set.length !== subjects.length
   );
 
-  const subjectComboRows = genSubjectComboRows(
+  const subjectComboRows = buildSubjectRows(
     removedSingleEntries,
     FILTERS.showAllSubjectCombinations
   );

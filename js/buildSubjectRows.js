@@ -1,9 +1,6 @@
 import { formatSubjectRowString, addCheckBoxToRow } from "./formatRows.js";
 
-function genSubjectComboRows(
-  powerset,
-  filterFn
-) {
+function buildSubjectRows(powerset, filterFn) {
   const emptySetIdx = 1;
 
   const powersetList = powerset
@@ -14,4 +11,4 @@ function genSubjectComboRows(
   return powersetList;
 }
 
-export { genSubjectComboRows };
+export { buildSubjectRows };
