@@ -1,6 +1,6 @@
 import { renderPowerset, clearTable } from "./renderPowerset.js";
 import { hideLoading, showLoading } from "./loading.js";
-import { removeLastComma } from "./utils.js";
+import { cleanInput } from "./cleanInput.js";
 
 const $submitButton = document.getElementById("form-submit-button");
 // use event to show loading first before the browser runs batch long running update to render the table (in the case of long lists)
@@ -15,10 +15,9 @@ function calculatePowerset(event) {
     const subjectsInput = document.getElementById("subjects-input");
     let subjects = subjectsInput.value;
 
-    subjects = subjects.trim();
+    subjects = cleanInput(subjects);
     if (!subjects) return;
 
-    subjects = removeLastComma(subjects);
     const subjectsList = subjects.split(",");
     renderPowerset(subjectsList);
   } catch (e) {
