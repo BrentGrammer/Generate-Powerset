@@ -1,4 +1,5 @@
 import { dispatch } from "./events.js";
+import { createCheckbox } from "./util.js";
 
 const $filters = document.getElementById("filters");
 const $filtersSection = document.getElementById("filters-section");
@@ -50,31 +51,19 @@ const removeFilterListeners = () => {
   });
 };
 
-const _genCheckboxListItem = (item) => {
-  const id = `filter-checkbox-${item}`;
-  const $checkbox = document.createElement("input");
-  $checkbox.type = "checkbox";
-  $checkbox.name = id;
-  $checkbox.value = item;
-  $checkbox.id = id;
-  $checkbox.classList.add(FILTER_CHECKBOX_CLASS);
-
-  const $label = document.createElement("label");
-  $label.htmlFor = id;
-  $label.appendChild(document.createTextNode(item));
-
-  const $listItem = document.createElement("li");
-
-  $listItem.appendChild($checkbox);
-  $listItem.appendChild($label);
-
-  return $listItem;
+const _createCheckboxListItem = (item) => {
+  return createCheckbox({
+    id: `filter-checkbox-${item}`,
+    label: item,
+    className: FILTER_CHECKBOX_CLASS,
+    containerEl: "li",
+  });
 };
 
 const renderFilters = (subjectsList) => {
   const $fragment = document.createDocumentFragment();
 
-  const $filterListItems = subjectsList.map((i) => _genCheckboxListItem(i));
+  const $filterListItems = subjectsList.map((i) => _createCheckboxListItem(i));
   $filterListItems.forEach(($filter) => $fragment.append($filter));
 
   $filters.appendChild($fragment);

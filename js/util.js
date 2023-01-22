@@ -26,4 +26,24 @@ const getSubjects = () => {
   return subjectsList;
 };
 
-export { getSubjects };
+const createCheckbox = ({ containerEl, label, id, className = '' }) => {
+  const $checkbox = document.createElement("input");
+  $checkbox.type = "checkbox";
+  $checkbox.name = id;
+  $checkbox.value = label;
+  $checkbox.id = id;
+  $checkbox.classList.add(className);
+
+  const $label = document.createElement("label");
+  $label.htmlFor = id;
+  $label.appendChild(document.createTextNode(label));
+
+  const $container = document.createElement(containerEl);
+
+  $container.appendChild($checkbox);
+  $container.appendChild($label);
+
+  return $container;
+}
+
+export { getSubjects, createCheckbox };
