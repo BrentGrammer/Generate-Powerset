@@ -38,9 +38,12 @@ function renderPowerset(subjects, filters = []) {
 function showTable() {
   $table.style.visibility = "visible";
 }
+function hideTable() {
+  $table.style.visibility = "hidden";
+}
 
 function clearTable() {
   $tbody.innerHTML = "";
 }
 
-export { renderPowerset, clearTable };
+export { renderPowerset, clearTable, hideTable };

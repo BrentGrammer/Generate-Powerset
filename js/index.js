@@ -1,4 +1,4 @@
-import { renderPowerset, clearTable } from "./renderPowerset.js";
+import { renderPowerset, clearTable, hideTable } from "./renderPowerset.js";
 import { hideLoading, showLoading } from "./loading.js";
 import { removeFilters, renderFilters } from "./filters.js";
 import { addFiltersListener } from "./events.js";
@@ -18,11 +18,17 @@ document.addEventListener("DOMContentLoaded", function (_) {
     renderPowerset(getSubjects(), filters);
   });
 
+  const MINIMUM_NUM_SUBJECTS = 3;
+
   const onSubmit = (event) => {
     event.preventDefault();
     try {
       const subjects = getSubjects();
-      if (!subjects) return;
+      if (!subjects || subjects.length < MINIMUM_NUM_SUBJECTS) {
+        hideTable();
+        alert(`Must enter at least ${MINIMUM_NUM_SUBJECTS} items to get a combinations list.`)
+        return;
+      }
 
       renderFilters(subjects);
       renderPowerset(subjects);
