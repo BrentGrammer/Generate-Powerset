@@ -1,4 +1,4 @@
-import { buildSetRows } from "./buildSubjectCombos.js";
+import { buildSetRows } from "./buildSetRows.js";
 import { genPowerset } from "./genPowerset.js";
 import { FILTERS } from "./subjectComboFilters.js";
 

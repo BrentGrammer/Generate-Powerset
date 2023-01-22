@@ -1,4 +1,4 @@
-const removeLastComma = (str) => {
+const _removeLastComma = (str) => {
   let removed = str;
 
   const lastChar = str.slice(-1);
@@ -13,7 +13,7 @@ const cleanInput = (input) => {
   let cleaned = input.trim();
   if (!cleaned) return undefined;
 
-  cleaned = removeLastComma(cleaned);
+  cleaned = _removeLastComma(cleaned);
   return cleaned;
 };
 
