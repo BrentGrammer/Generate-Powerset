@@ -1,11 +1,12 @@
 import { renderPowerset, clearTable } from "./renderPowerset.js";
 import { hideLoading, showLoading } from "./loading.js";
 import { cleanInput } from "./cleanInput.js";
-import { clearFilters, renderFilterSelection } from "./filters.js";
+import { clearFilters, hideFilters, renderFilters } from "./filters.js";
 
 const $submitButton = document.getElementById("form-submit-button");
 // use event to show loading first before the browser runs batch long running update to render the table (in the case of long lists)
 $submitButton.addEventListener("mousedown", (e) => {
+  hideFilters();
   clearFilters();
   clearTable();
   showLoading();
@@ -27,7 +28,7 @@ const onSubmit = (event) => {
     const subjectsList = subjects.split(",");
 
     calculatePowerset(subjectsList);
-    renderFilterSelection(subjectsList);
+    renderFilters(subjectsList);
   } catch (e) {
     console.error(e);
     alert("something went wrong.");
