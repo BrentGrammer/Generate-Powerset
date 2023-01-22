@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function (_) {
   });
 
   const MINIMUM_NUM_SUBJECTS = 3;
+  const MAX_NUM_SUBJECTS = 15;
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -26,7 +27,17 @@ document.addEventListener("DOMContentLoaded", function (_) {
       const subjects = getSubjects();
       if (!subjects || subjects.length < MINIMUM_NUM_SUBJECTS) {
         hideTable();
-        alert(`Must enter at least ${MINIMUM_NUM_SUBJECTS} items to get a combinations list.`)
+        alert(
+          `Must enter at least ${MINIMUM_NUM_SUBJECTS} items to get a combinations list.`
+        );
+        return;
+      }
+
+      if (subjects.length > MAX_NUM_SUBJECTS) {
+        alert(
+          `You have entered ${subjects.length} items.  Maximum number of items allowed is 15.  This is to prevent browser crashes and memory overload.`
+        );
+        hideTable();
         return;
       }
 
