@@ -63,5 +63,14 @@ table tr:nth-child(even) td {
 }
 
 #filters {
-    display: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
 }

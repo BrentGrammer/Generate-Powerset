@@ -16,7 +16,7 @@ const _genCheckboxListItem = (item) => {
   $label.htmlFor = id;
   $label.appendChild(document.createTextNode(item));
 
-  const $listItem = document.createElement('li');
+  const $listItem = document.createElement("li");
 
   $listItem.appendChild($checkbox);
   $listItem.appendChild($label);
@@ -25,12 +25,12 @@ const _genCheckboxListItem = (item) => {
 };
 
 const renderFilterSelection = (subjectsList) => {
-  const $ul = document.createElement('ul');
- 
-  const $filterListItems = subjectsList.map((i) => _genCheckboxListItem(i));
-  $filterListItems.forEach(($filter) => $ul.appendChild($filter));
+  const $fragment = document.createDocumentFragment();
 
-  $filters.appendChild($ul);
+  const $filterListItems = subjectsList.map((i) => _genCheckboxListItem(i));
+  $filterListItems.forEach(($filter) => $fragment.append($filter));
+
+  $filters.appendChild($fragment);
 };
 
 export { clearFilters, renderFilterSelection };
