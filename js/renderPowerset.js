@@ -1,7 +1,6 @@
 import { buildSetRows } from "./buildSetRows.js";
 import { genPowerset } from "./genPowerset.js";
 import { LIMITS } from "./comboLimits.js";
-import { includesFilters } from "./filters.js";
 
 const $table = document.getElementById("combinations-table");
 const $tbody = $table.getElementsByTagName("tbody")[0];
@@ -17,7 +16,17 @@ const isNotRedundant = (set, subjects) => {
   return set.length !== 1 && set.length !== subjects.length;
 };
 
-function renderPowerset(subjects, filters = []) {
+const includesFilters = (set, filters) => {
+  const { selected, setting } = filters;
+  if (selected.length === 0) {
+    return true;
+  }
+  if (setting === "OR") return selected.some((filter) => set.includes(filter));
+
+  return selected.every((filter) => set.includes(filter));
+};
+
+function renderPowerset(subjects, filters = { setting: "AND", selected: [] }) {
   const rawPowerset = genPowerset(subjects);
   let powerSet = rawPowerset.filter(
     (set) => isNotRedundant(set, subjects) && includesFilters(set, filters)
