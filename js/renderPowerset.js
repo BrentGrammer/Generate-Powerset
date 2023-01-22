@@ -1,6 +1,6 @@
 import { buildSetRows } from "./buildSetRows.js";
 import { genPowerset } from "./genPowerset.js";
-import { FILTERS } from "./subjectComboFilters.js";
+import { LIMITS } from "./comboLimits.js";
 
 const $tbody = document
   .getElementById("subject-table")
@@ -21,7 +21,7 @@ function renderPowerset(subjects) {
 
   const subjectComboRows = buildSetRows(
     removedSingleEntries,
-    FILTERS.showAllSubjectCombinations
+    LIMITS.showAllSubjectCombinations
   );
 
   subjectComboRows.forEach((rowContent) => {

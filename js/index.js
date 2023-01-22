@@ -20,9 +20,8 @@ const onSubmit = (event) => {
   event.preventDefault();
   try {
     const subjectsInput = document.getElementById("subjects-input");
-    let subjects = subjectsInput.value;
 
-    subjects = cleanInput(subjects);
+    const subjects = cleanInput(subjectsInput.value);
     if (!subjects) return;
 
     const subjectsList = subjects.split(",");
