@@ -83,7 +83,7 @@ table tr:nth-child(even) td {
     gap: 0.25rem;
 }
 
-.filter-options {
+.filter-settings {
     display: flex;
     flex-direction: row;
     justify-content: center;
