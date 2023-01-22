@@ -3,9 +3,8 @@ import { genPowerset } from "./genPowerset.js";
 import { LIMITS } from "./comboLimits.js";
 import { includesFilters } from "./filters.js";
 
-const $tbody = document
-  .getElementById("subject-table")
-  .getElementsByTagName("tbody")[0];
+const $table = document.getElementById("combinations-table");
+const $tbody = $table.getElementsByTagName("tbody")[0];
 
 function _insertSubjectRow(rowContent) {
   // Insert a row at the end of table
@@ -32,6 +31,12 @@ function renderPowerset(subjects, filters = []) {
   subjectComboRows.forEach((rowContent) => {
     _insertSubjectRow(rowContent);
   });
+
+  showTable();
+}
+
+function showTable() {
+  $table.style.visibility = "visible";
 }
 
 function clearTable() {

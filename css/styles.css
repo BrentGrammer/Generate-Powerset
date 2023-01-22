@@ -6,6 +6,7 @@ table,
 th,
 td {
     border: 1px solid black;
+    border-radius: 5px;
 }
 
 th,
@@ -21,7 +22,11 @@ table tr:nth-child(even) td {
     background: #fff;
 }
 
-.subjects-section {
+#combinations-table {
+    visibility: hidden;
+}
+
+.main {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -63,7 +68,9 @@ table tr:nth-child(even) td {
 }
 
 #filters-section {
-    visibility: 'hidden';
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 #filters {
@@ -77,4 +84,8 @@ table tr:nth-child(even) td {
 ul {
     list-style: none;
     padding: 0;
+}
+
+.section-header {
+    margin: 0;
 }
