@@ -1,4 +1,4 @@
-import { renderPowerset, clearTable } from "./renderSubjectCombos.js";
+import { renderPowerset, clearTable } from "./renderPowerset.js";
 import { hideLoading, showLoading } from "./loading.js";
 import { removeLastComma } from "./utils.js";
 
