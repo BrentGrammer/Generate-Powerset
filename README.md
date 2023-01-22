@@ -1,5 +1,5 @@
 # Power Set Generator
-A JavaScript program to generate a table of all possible combinations of a given list of items.  (Note: the original set and combinations of length 1 are ommitted from the results) 
+A JavaScript program to generate a table of all possible combinations of a given list of items.  (Note: the original set and combinations of length 1 are omitted from the results) 
 ### [Use the set generator online](https://brentgrammer.github.io/Generate-Powerset/)
 
 ## Pre-requisites:
