@@ -37,5 +37,5 @@ const onSubmit = (event) => {
   }
 };
 
-const form = document.getElementById("subjects-form");
-form.addEventListener("submit", onSubmit);
+const $form = document.getElementById("subjects-form");
+$form.addEventListener("submit", onSubmit);
