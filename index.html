@@ -22,9 +22,13 @@
     </form>
     <section id="filters-section">
       <h3 class="section-header">Filter combinations</h3>
-      <p class="subtext">
-        (Check items to see combinations containing any of the selected filters)
-      </p>
+      <div class="filter-options">
+        <p class="subtext">
+          Show combinations:
+        </p>
+        <input type="checkbox" name="filter-option-AND" value="AND" id="filter-option-AND" class="filters-checkbox" checked><label for="filter-option-AND">Including all selected</label>
+        <input type="checkbox" name="filter-option-OR" value="OR" id="filter-option-OR" class="filters-checkbox"><label for="filter-option-OR">Including any selected</label>
+      </div>
       <ul id="filters"></ul>
     </section>
     <div id="loading" class="loading">Loading&#8230;</div>
