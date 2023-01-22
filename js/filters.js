@@ -1,9 +1,9 @@
+import { dispatch } from "./events.js";
+
 const $filters = document.getElementById("filters");
 const $filtersSection = document.getElementById("filters-section");
 
 const FILTER_CHECKBOX_CLASS = "filters-checkbox";
-
-let filters = [];
 
 const showFilters = () => {
   $filtersSection.style.visibility = "visible";
@@ -11,27 +11,34 @@ const showFilters = () => {
 const hideFilters = () => {
   $filtersSection.style.visibility = "hidden";
 };
-const resetFilters = () => {
-  filters = [];
-};
-const clearFilters = () => {
-  resetFilters();
+const removeFilters = () => {
+  removeFilterListeners();
   $filters.innerHTML = "";
+  hideFilters();
 };
 
-const updateFiltersHandler = () => {
+const includesFilters = (set, filters) => {
+  if (filters.length === 0) {
+    return true;
+  }
+  return filters.some((filter) => set.includes(filter));
+};
+
+const emitFilters = (e) => {
   const checkboxes = document.querySelectorAll(`.${FILTER_CHECKBOX_CLASS}`);
 
-  filters = Array.from(checkboxes)
+  const filters = Array.from(checkboxes)
     .filter((i) => i.checked)
     .map((i) => i.value);
+
+  dispatch("filterschange", filters);
 };
 
 const addFilterListeners = () => {
   const checkboxes = document.querySelectorAll(`.${FILTER_CHECKBOX_CLASS}`);
 
   checkboxes.forEach(function ($checkbox) {
-    $checkbox.addEventListener("change", updateFiltersHandler);
+    $checkbox.addEventListener("change", emitFilters);
   });
 };
 
@@ -39,7 +46,7 @@ const removeFilterListeners = () => {
   const checkboxes = document.querySelectorAll(`.${FILTER_CHECKBOX_CLASS}`);
 
   checkboxes.forEach(function ($checkbox) {
-    $checkbox.removeEventListener("change", updateFiltersHandler);
+    $checkbox.removeEventListener("change", emitFilters);
   });
 };
 
@@ -75,4 +82,4 @@ const renderFilters = (subjectsList) => {
   showFilters();
 };
 
-export { clearFilters, renderFilters, hideFilters, removeFilterListeners };
+export { removeFilters, renderFilters, includesFilters };

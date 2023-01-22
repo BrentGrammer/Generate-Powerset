@@ -1,6 +1,7 @@
 import { buildSetRows } from "./buildSetRows.js";
 import { genPowerset } from "./genPowerset.js";
 import { LIMITS } from "./comboLimits.js";
+import { includesFilters } from "./filters.js";
 
 const $tbody = document
   .getElementById("subject-table")
@@ -13,14 +14,18 @@ function _insertSubjectRow(rowContent) {
   $newCell.innerHTML = rowContent;
 }
 
-function renderPowerset(subjects) {
+const isNotRedundant = (set, subjects) => {
+  return set.length !== 1 && set.length !== subjects.length;
+};
+
+function renderPowerset(subjects, filters = []) {
   const rawPowerset = genPowerset(subjects);
-  const removedSingleEntries = rawPowerset.filter(
-    (set) => set.length !== 1 && set.length !== subjects.length
+  let powerSet = rawPowerset.filter(
+    (set) => isNotRedundant(set, subjects) && includesFilters(set, filters)
   );
 
   const subjectComboRows = buildSetRows(
-    removedSingleEntries,
+    powerSet,
     LIMITS.showAllSubjectCombinations
   );
 

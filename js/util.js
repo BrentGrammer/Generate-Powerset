@@ -17,4 +17,13 @@ const cleanInput = (input) => {
   return cleaned;
 };
 
-export { cleanInput };
+const getSubjects = () => {
+  const subjectsInput = document.getElementById("subjects-input");
+  const subjects = cleanInput(subjectsInput.value);
+  if (!subjects) return undefined;
+
+  const subjectsList = subjects.split(",");
+  return subjectsList;
+};
+
+export { getSubjects };

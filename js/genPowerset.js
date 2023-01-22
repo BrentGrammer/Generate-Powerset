@@ -12,5 +12,8 @@ export const genPowerset = (array) => {
     }
   }
 
-  return result;
+  const afterEmptySet = 1;
+  const powerset = result.splice(afterEmptySet);
+
+  return powerset;
 };

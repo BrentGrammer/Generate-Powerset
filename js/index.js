@@ -1,40 +1,31 @@
 import { renderPowerset, clearTable } from "./renderPowerset.js";
 import { hideLoading, showLoading } from "./loading.js";
-import { cleanInput } from "./cleanInput.js";
-import {
-  clearFilters,
-  hideFilters,
-  removeFilterListeners,
-  renderFilters,
-} from "./filters.js";
+import { removeFilters, renderFilters } from "./filters.js";
+import { addFiltersListener } from "./events.js";
+import { getSubjects } from "./util.js";
 
 document.addEventListener("DOMContentLoaded", function (_) {
   const $submitButton = document.getElementById("form-submit-button");
   // use event to show loading first before the browser runs batch long running update to render the table (in the case of long lists)
   $submitButton.addEventListener("mousedown", (e) => {
-    removeFilterListeners();
-    hideFilters();
-    clearFilters();
+    removeFilters();
     clearTable();
     showLoading();
   });
 
-  function calculatePowerset(subjectsList) {
-    renderPowerset(subjectsList);
-  }
+  addFiltersListener((filters) => {
+    clearTable();
+    renderPowerset(getSubjects(), filters);
+  });
 
   const onSubmit = (event) => {
     event.preventDefault();
     try {
-      const subjectsInput = document.getElementById("subjects-input");
-
-      const subjects = cleanInput(subjectsInput.value);
+      const subjects = getSubjects();
       if (!subjects) return;
 
-      const subjectsList = subjects.split(",");
-
-      calculatePowerset(subjectsList);
-      renderFilters(subjectsList);
+      renderFilters(subjects);
+      renderPowerset(subjects);
     } catch (e) {
       console.error(e);
       alert("something went wrong.");
