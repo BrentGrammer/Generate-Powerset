@@ -14,4 +14,4 @@ const addFiltersListener = (cb) => {
   document.addEventListener(Events.FILTERS_CHANGE, (e) => cb(e.detail));
 };
 
-export { dispatch, addFiltersListener };
+export { dispatch, addFiltersListener, Events };
