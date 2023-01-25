@@ -9,6 +9,13 @@ button {
     cursor: pointer;
 }
 
+input {
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+    border: 1px solid slategray;
+    font-size: 1rem;
+}
+
 table,
 th,
 td {
@@ -43,10 +50,6 @@ table tr:nth-child(even) td {
 
 .form-text-input {
     width: 100%;
-    padding: 0.25rem 0.5rem 0.25rem 0.5rem;
-    border-radius: 5px;
-    border: 1px solid slategray;
-    font-size: 1rem;
 }
 
 .form {
@@ -133,4 +136,8 @@ ul {
 
 #set-filters-button {
     background: lightblue;
+}
+
+#combo-limit-input {
+    max-width: 3rem;
 }
