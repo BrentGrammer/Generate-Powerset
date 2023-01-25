@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function (_) {
   const $submitButton = document.getElementById("form-submit-button");
   // use event to show loading first before the browser runs batch long running update to render the table (in the case of long lists)
   $submitButton.addEventListener("mousedown", (e) => {
+    e.preventDefault();
+    e.stopPropagation(); // prevent loading... bug when getting new combos after setting filters.
     removeFilters();
     clearTable();
     showLoading();

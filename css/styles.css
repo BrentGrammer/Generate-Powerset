@@ -2,6 +2,13 @@ body {
     padding: 2rem;
 }
 
+button {
+    border-radius: 5px;
+    border: 1px solid slategray;
+    padding: 1rem 2rem;
+    cursor: pointer;
+}
+
 table,
 th,
 td {
@@ -57,10 +64,6 @@ table tr:nth-child(even) td {
 
 .form-submit-button {
     background-color: skyblue;
-    border-radius: 5px;
-    border: 1px solid slategray;
-    padding: 1rem 2rem;
-    cursor: pointer;
 }
 
 .loading {
@@ -111,4 +114,23 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.filter-input {
+    padding: 3px 7px;
+}
+
+.filter-buttons-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.filters-button {
+    padding: 0.5rem 1rem;
+}
+
+#set-filters-button {
+    background: lightblue;
 }

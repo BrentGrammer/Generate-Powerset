@@ -27,9 +27,17 @@
     <section id="filters-section">
       <h3 class="section-header">Filter combinations</h3>
       <div class="filter-settings">
-        <input type="checkbox" name="filter-setting-OR" value="OR" id="filter-setting-OR" class="filter-settings-checkbox filters-checkbox"><label for="filter-setting-OR">Show combinations including any selected</label>
+        <input type="checkbox" name="filter-setting-OR" value="OR" id="filter-setting-OR"
+          class="filter-settings-checkbox filters-checkbox"><label for="filter-setting-OR">Show combinations including
+          any selected</label>
       </div>
       <ul id="filters"></ul>
+      <label for="combo-limit-input">Limit max number of combinations:</label>
+      <input type="number" name="combo-limit" id="combo-limit-input" class="filter-input" />
+      <section class="filter-buttons-section">
+        <button type="button" id="set-filters-button" class="filters-button">Set Filters</button>
+        <button type="button" id="reset-filters-button" class="filters-button">Clear Filters</button>
+      </section>
     </section>
     <div id="loading" class="loading">Loading&#8230;</div>
     <table id="combinations-table">

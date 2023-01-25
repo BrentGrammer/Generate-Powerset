@@ -1,6 +1,5 @@
 import { buildSetRows } from "./buildSetRows.js";
 import { genPowerset } from "./genPowerset.js";
-import { LIMITS } from "./comboLimits.js";
 
 const $table = document.getElementById("combinations-table");
 const $tbody = $table.getElementsByTagName("tbody")[0];
@@ -26,16 +25,21 @@ const includesFilters = (set, filters) => {
   return selected.every((filter) => set.includes(filter));
 };
 
-function renderPowerset(subjects, filters = { setting: "AND", selected: [] }) {
+const limitMaxCombos = (set, limit) => (limit ? set.length <= limit : true);
+
+function renderPowerset(
+  subjects,
+  filters = { setting: "AND", selected: [], limit: null }
+) {
   const rawPowerset = genPowerset(subjects);
   let powerSet = rawPowerset.filter(
-    (set) => isNotRedundant(set, subjects) && includesFilters(set, filters)
+    (set) =>
+      isNotRedundant(set, subjects) &&
+      includesFilters(set, filters) &&
+      limitMaxCombos(set, filters.limit)
   );
 
-  const subjectComboRows = buildSetRows(
-    powerSet,
-    LIMITS.showAllSubjectCombinations
-  );
+  const subjectComboRows = buildSetRows(powerSet);
 
   subjectComboRows.forEach((rowContent) => {
     _insertSubjectRow(rowContent);

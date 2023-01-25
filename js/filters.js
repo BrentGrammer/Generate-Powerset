@@ -2,70 +2,84 @@ import { dispatch } from "./events.js";
 import { createCheckbox } from "./util.js";
 import { Events } from "./events.js";
 
+const FILTER_SELECTION_CHECKBOX_CLASS = "filters-checkbox";
+
 const $filters = document.getElementById("filters");
 const $filtersSection = document.getElementById("filters-section");
-const getFilterSettingOR = () => document.getElementById("filter-setting-OR");
+const $or = document.getElementById("filter-setting-OR");
+const $combosLimit = document.getElementById("combo-limit-input");
+const $setFilters = document.getElementById("set-filters-button");
+const $resetFilters = document.getElementById("reset-filters-button");
+const getAllFilterCheckboxes = () => {
+  return Array.from(
+    $filters.querySelectorAll(`.${FILTER_SELECTION_CHECKBOX_CLASS}`)
+  );
+};
 
 /**
  * @returns string: 'AND' | 'OR'
  */
 const getFilterSetting = () => {
-  const $or = getFilterSettingOR();
-
   if ($or.checked === true) {
     return "OR";
   }
   return "AND";
 };
 
-const FILTER_SELECTION_CHECKBOX_CLASS = "filters-checkbox";
+const resetFilters = () => {
+  $or.checked = false;
+  $combosLimit.value = "";
 
-const resetFilterSettings = () => {
-  getFilterSettingOR().checked = false;
+  const filterSelections = getAllFilterCheckboxes();
+
+  for (let i = 0; i < filterSelections.length; i++) {
+    const box = filterSelections[i];
+    box.checked = false;
+  }
 };
 
 const showFilters = () => {
   $filtersSection.style.visibility = "visible";
 };
 const hideFilters = () => {
+  $filters.innerHTML = "";
   $filtersSection.style.visibility = "hidden";
 };
 const removeFilters = () => {
   removeFilterListeners();
-  resetFilterSettings();
-  $filters.innerHTML = "";
+  resetFilters();
   hideFilters();
 };
 
+const MINIMUM_LIMIT = 2;
+
 const emitFilters = (e) => {
-  const filterSelections = $filters.querySelectorAll(
-    `.${FILTER_SELECTION_CHECKBOX_CLASS}`
+  let limit = $combosLimit.value;
+
+  if (limit !== "" && Number(limit) < MINIMUM_LIMIT) {
+    alert(
+      `Please enter a max combination limit value higher than ${MINIMUM_LIMIT}.`
     );
-    const setting = getFilterSetting();
-    
-    const selected = Array.from(filterSelections)
+    return;
+  }
+  const filterSelections = getAllFilterCheckboxes();
+  const setting = getFilterSetting();
+
+  const selected = filterSelections
     .filter((i) => i.checked)
     .map((i) => i.value);
-    
-  dispatch(Events.FILTERS_CHANGE, { selected, setting });
+
+  dispatch(Events.FILTERS_CHANGE, { selected, setting, limit: Number(limit) });
 };
 
 const addFilterListeners = () => {
-  const $checkboxes = document.querySelectorAll(
-    ".filters-checkbox"
-  );
-  $checkboxes.forEach(function ($checkbox) {
-    $checkbox.addEventListener("change", emitFilters);
-  });
+  $setFilters.addEventListener("click", emitFilters);
+  $resetFilters.addEventListener("click", resetFilters);
 };
 
 const removeFilterListeners = () => {
-  const $checkboxes = document.querySelectorAll(
-    ".filters-checkbox"
-  );
-  $checkboxes.forEach(function ($checkbox) {
-    $checkbox.removeEventListener("change", emitFilters);
-  });
+  $setFilters.removeEventListener("click", emitFilters);
+  $resetFilters.removeEventListener("click", resetFilters);
 };
 
 const _createCheckboxListItem = (item) => {
