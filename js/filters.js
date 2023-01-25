@@ -8,7 +8,7 @@ const $filters = document.getElementById("filters");
 const $filtersSection = document.getElementById("filters-section");
 const $or = document.getElementById("filter-setting-OR");
 const $combosLimit = document.getElementById("combo-limit-input");
-const $setFilters = document.getElementById("set-filters-button");
+const $setFilters = document.getElementById("apply-filters-button");
 const $resetFilters = document.getElementById("reset-filters-button");
 const getAllFilterCheckboxes = () => {
   return Array.from(
