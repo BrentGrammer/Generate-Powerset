@@ -5,15 +5,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
   <title>Powerset Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
   <main class="main">
     <div class="header">
-
       <h1 class="section-header">Generate a Power Set</h1>
-      <p>(Original set and combinations of 1 item are excluded from results)</p>
     </div>
     <form id="subjects-form" class="form">
       <label for="subjects-input">Enter a comma separated list of items to get all possible
@@ -40,14 +42,17 @@
       </section>
     </section>
     <div id="loading" class="loading">Loading&#8230;</div>
-    <table id="combinations-table">
-      <thead>
-        <tr>
-          <th>Subject Combinations</th>
-        </tr>
-      </thead>
-      <tbody id="table-body"></tbody>
-    </table>
+    <section class="combinations-table-section">
+      <p class="info" id="results-info">(Original set and combinations of 1 item are excluded from results)</p>
+      <table id="combinations-table">
+        <thead>
+          <tr>
+            <th>Subject Combinations</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </section>
   </main>
   <script type="module" src="js/index.js"></script>
 </body>

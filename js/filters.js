@@ -58,7 +58,7 @@ const emitFilters = (e) => {
 
   if (limit !== "" && Number(limit) < MINIMUM_LIMIT) {
     alert(
-      `Please enter a max combination limit value higher than ${MINIMUM_LIMIT}.`
+      `Please enter a max combination limit value of ${MINIMUM_LIMIT} or more.`
     );
     return;
   }

@@ -3,6 +3,7 @@ import { genPowerset } from "./genPowerset.js";
 
 const $table = document.getElementById("combinations-table");
 const $tbody = $table.getElementsByTagName("tbody")[0];
+const $info = document.getElementById("results-info");
 
 function _insertSubjectRow(rowContent) {
   // Insert a row at the end of table
@@ -49,9 +50,11 @@ function renderPowerset(
 }
 
 function showTable() {
+  $info.style.visibility = "visible";
   $table.style.visibility = "visible";
 }
 function hideTable() {
+  $info.style.visibility = "hidden";
   $table.style.visibility = "hidden";
 }
 
