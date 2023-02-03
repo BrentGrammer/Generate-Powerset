@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function (_) {
 
       if (subjects.length > MAX_NUM_SUBJECTS) {
         alert(
-          `You have entered ${subjects.length} items.  Maximum number of items allowed is 15.  This is to prevent browser crashes and memory overload.`
+          `You have entered ${subjects.length} items.  Maximum number of items allowed is ${MAX_NUM_SUBJECTS}.  This is to prevent browser crashes and memory overload.`
         );
         hideTable();
         return;
